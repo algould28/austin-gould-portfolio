@@ -16,6 +16,8 @@ export default class App {
     if (instance) return instance;
     instance = this;
 
+    document.getElementById("progressPercentage").innerHTML = 0;
+
     // threejs elements
     this.canvas = document.querySelector("canvas.threejs");
     this.scene = new THREE.Scene();
