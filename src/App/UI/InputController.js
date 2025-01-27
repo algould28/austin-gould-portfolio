@@ -2,9 +2,13 @@ import { inputStore } from "../Utils/Store";
 
 export default class InputController {
   constructor() {
-    this.startListening();
     this.inputStore = inputStore;
     this.keyPressed = {};
+
+    // only accept inputs once the preloader is done (meaning the user has pressed the start button)
+    this.inputStore.subscribe((state) => {
+      if (state.ready) this.startListening();
+    });
   }
 
   startListening() {

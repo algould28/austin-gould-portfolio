@@ -1,9 +1,11 @@
 import assetStore from "../Utils/AssetStore.js";
+import { inputStore } from "../Utils/Store";
 import { appStateStore } from "../Utils/Store.js";
 
 export default class Preloader {
   constructor() {
     this.assetStore = assetStore;
+    this.inputStore = inputStore;
 
     // access to DOM elements
     this.overlay = document.querySelector(".overlay");
@@ -36,6 +38,8 @@ export default class Preloader {
       () => {
         this.overlay.classList.add("fade");
         this.startButton.classList.add("fadeOut");
+        // start accepting inputs
+        this.inputStore.setState({ ready: true });
 
         window.setTimeout(() => {
           this.overlay.remove();

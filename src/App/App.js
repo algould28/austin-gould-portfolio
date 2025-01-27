@@ -16,6 +16,7 @@ export default class App {
     if (instance) return instance;
     instance = this;
 
+    // set asset loading percentage to 0
     document.getElementById("progressPercentage").innerHTML = 0;
 
     // threejs elements
