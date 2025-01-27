@@ -6,4 +6,9 @@ export default {
   publicDir: "./public/",
   base: "./",
   plugins: [wasm(), topLevelAwait()],
+  build: {
+    rollupOptions: {
+      treeshake: false,
+    },
+  },
 };
