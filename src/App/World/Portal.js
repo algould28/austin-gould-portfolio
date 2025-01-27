@@ -10,7 +10,6 @@ export default class Portal {
     this.portalMesh = portalMesh;
     this.modalInfo = modalInfo;
     this.previouslyIsNear = false;
-    console.log(this.portalMesh.material);
 
     this.portalNearMaterial = new THREE.MeshStandardMaterial({
       ...portalMesh.material,
@@ -27,7 +26,6 @@ export default class Portal {
     });
 
     this.portalMesh.material = this.portalFarMaterial;
-    console.log(this.portalMesh.material);
   }
 
   loop() {
