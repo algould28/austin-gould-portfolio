@@ -4,17 +4,15 @@ export default class ModalContentProvider {
       aboutMe: {
         title: "About me",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "<p>Frontend Web Developer with a variety of hands-on experience in developing web and mobile applications.  Highly skilled in React, Typescript, React Native, and other web development frameworks.  Proven ability to create visually appealing, user-friendly, and scalable web platforms. Seeking to leverage my skills and experience to create innovative and efficient solutions.</p><p></p><p>I spend most of my free time training for and competing in ultimate frisbee tournaments. When that dies down in the winter and spring, I am always seeking the mountains for snowboarding. I also enjoy hiking, camping, backpacking, rocket league, casual sports, and general traveling.</p>",
       },
       work1: {
         title: "Headstorm Work",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        description: "Coming soon!",
       },
       work2: {
         title: "Freelance Work",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        description: "Coming soon!",
       },
       contact: {
         title: "Contact Me",
