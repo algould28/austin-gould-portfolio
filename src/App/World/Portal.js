@@ -41,6 +41,7 @@ export default class Portal {
 
       if (isNear && !this.previouslyIsNear) {
         this.portalMesh.material = this.portalNearMaterial;
+
         this.modalManager.openModal(
           this.modalInfo.title,
           this.modalInfo.description

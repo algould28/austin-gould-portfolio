@@ -113,7 +113,8 @@ body {
   /* Set text color to white within the modal */
 }
 
-.close {
+.close,
+.resume-button {
   display: inline-block;
   width: 120px;
   height: 40px;
@@ -134,8 +135,16 @@ body {
 }
 
 .close:hover,
-.close:focus {
+.close:focus,
+.resume-button:hover,
+.resume-button:focus {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+.resume-button {
+  margin-left: 8px;
+  width: 160px;
+  display: none;
 }
 
 .modal h1,
