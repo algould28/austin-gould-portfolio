@@ -2,7 +2,6 @@
 import * as THREE from "three";
 import App from "../App.js";
 import { inputStore } from "../Utils/Store.js";
-import { QueryFilterFlags } from "@dimforge/rapier3d";
 
 /**
  * Class representing a character controller.

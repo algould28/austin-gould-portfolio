@@ -10,6 +10,8 @@ export default class InputController {
   startListening() {
     window.addEventListener("keydown", (event) => this.onKeyDown(event));
     window.addEventListener("keyup", (event) => this.onKeyUp(event));
+    window.addEventListener("touchstart", (event) => this.onTouchStart(event));
+    window.addEventListener("touchmove", (event) => this.onTouchMove(event));
   }
 
   onKeyDown(event) {
@@ -56,5 +58,15 @@ export default class InputController {
         break;
     }
     this.keyPressed[event.code] = false;
+  }
+
+  onTouchMove(event) {
+    console.log("onTouchMove");
+    console.log(event);
+  }
+
+  onTouchStart(event) {
+    console.log("onTouchStart");
+    console.log(event);
   }
 }
