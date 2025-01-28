@@ -1,5 +1,3 @@
-import * as THREE from "three";
-
 import App from "../App.js";
 import Physics from "./Physics.js";
 import Environment from "./Environment.js";
@@ -30,10 +28,10 @@ export default class World {
     this.loop();
   }
 
-  loop(deltaTime, elapsedTime) {
+  loop(deltaTime) {
     this.physics.loop();
     if (this.environment) this.environment.loop();
-    if (this.characterController) this.characterController.loop();
+    if (this.characterController) this.characterController.loop(deltaTime);
     if (this.animationController) this.animationController.loop(deltaTime);
   }
 }

@@ -64,7 +64,7 @@ export default class CharacterController {
   /**
    * Loop function that updates the character's position and movement.
    */
-  loop() {
+  loop(deltaTime) {
     // Initialize movement vector based on input values
     const movement = new THREE.Vector3();
     if (this.forward) {
@@ -91,7 +91,8 @@ export default class CharacterController {
     }
 
     // Normalize and scale movement vector and set y component to -1
-    movement.normalize().multiplyScalar(0.07);
+    // multiply by delta time to normalize for device framerate. Meaning, we'll move at the same speed regardless of framerate
+    movement.normalize().multiplyScalar(deltaTime * 7.5);
     movement.y = -1;
 
     // Update collider movement and get new position of rigid body
