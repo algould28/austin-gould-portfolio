@@ -14,7 +14,7 @@ export default class Portal {
 
     this.portalNearColor = new THREE.Color(0xc77be2);
     this.portalFarColor1 = new THREE.Color(0xa528e2);
-    this.portalFarColor2 = new THREE.Color(0x5f078a);
+    this.portalFarColor2 = new THREE.Color(0xc36de3);
 
     // code examples is in progress so flashing yellow and black like caution tape for now
     if (modalInfo.title === "Code Examples") {
@@ -27,14 +27,14 @@ export default class Portal {
       ...portalMesh.material,
       emissive: this.portalNearColor,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.7,
     });
 
     this.portalFarMaterial = new THREE.MeshStandardMaterial({
       ...portalMesh.material,
       emissive: this.portalFarColor1,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.7,
     });
 
     this.portalMesh.material = this.portalFarMaterial;
@@ -45,11 +45,11 @@ export default class Portal {
     this.tween = new Tween(this.portalFarMaterial.emissive);
 
     this.tween
-      .to(this.portalFarColor1, 4000)
+      .to(this.portalFarColor1, 3500)
       .onComplete(() => {
         setTimeout(() => {
           this.animatePortalColor2();
-        }, 500);
+        }, 1000);
       })
       .start();
   }
@@ -58,19 +58,19 @@ export default class Portal {
     this.tween = new Tween(this.portalFarMaterial.emissive);
 
     this.tween
-      .to(this.portalFarColor2, 4000)
+      .to(this.portalFarColor2, 3500)
       .onComplete(() => {
         setTimeout(() => {
           this.animatePortalColor1();
-        }, 500);
+        }, 1000);
       })
       .start();
   }
 
   loop() {
     this.character = this.app.world.character.instance;
+
     if (this.character) {
-      // if (this.modalInfo.title === "Code Examples")
       this.tween.update();
 
       const portalPosition = new THREE.Vector3();
