@@ -42,13 +42,13 @@ export default class CharacterController {
     this.colliderType = this.physics.rapier.ColliderDesc.cuboid(0.3, 1, 0.3);
     this.collider = this.physics.world.createCollider(
       this.colliderType,
-      this.rigidBody
+      this.rigidBody,
     );
 
     // Set rigid body position to character position
     const worldPosition = this.character.getWorldPosition(new THREE.Vector3());
     const worldRotation = this.character.getWorldQuaternion(
-      new THREE.Quaternion()
+      new THREE.Quaternion(),
     );
     this.rigidBody.setTranslation(worldPosition);
     this.rigidBody.setRotation(worldRotation);
@@ -85,7 +85,7 @@ export default class CharacterController {
       const angle = Math.atan2(movement.x, movement.z) + Math.PI;
       const characterRotation = new THREE.Quaternion().setFromAxisAngle(
         new THREE.Vector3(0, 1, 0),
-        angle
+        angle,
       );
       this.character.quaternion.slerp(characterRotation, 0.1);
     }

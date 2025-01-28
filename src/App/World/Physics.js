@@ -37,16 +37,16 @@ export default class Physics {
   add(mesh, type, collider) {
     // defining the rigid body type
     let rigidBodyType;
-    switch(type) {
+    switch (type) {
       case "dynamic":
-      rigidBodyType = this.rapier.RigidBodyDesc.dynamic();
-      break;
-    case "fixed":
-      rigidBodyType = this.rapier.RigidBodyDesc.fixed();
-      break
-    case 'kinematic':
-      rigidBodyType = this.rapier.RigidBodyDesc.kinematicPositionBased();
-      break;
+        rigidBodyType = this.rapier.RigidBodyDesc.dynamic();
+        break;
+      case "fixed":
+        rigidBodyType = this.rapier.RigidBodyDesc.fixed();
+        break;
+      case "kinematic":
+        rigidBodyType = this.rapier.RigidBodyDesc.kinematicPositionBased();
+        break;
     }
     this.rigidBody = this.world.createRigidBody(rigidBodyType);
 
@@ -59,7 +59,7 @@ export default class Physics {
         colliderType = this.rapier.ColliderDesc.cuboid(
           dimensions.x / 2,
           dimensions.y / 2,
-          dimensions.z / 2
+          dimensions.z / 2,
         );
         this.world.createCollider(colliderType, this.rigidBody);
         break;
@@ -72,7 +72,7 @@ export default class Physics {
         const { scaledVertices, indices } = this.computeTrimeshDimensions(mesh);
         colliderType = this.rapier.ColliderDesc.trimesh(
           scaledVertices,
-          indices
+          indices,
         );
         this.world.createCollider(colliderType, this.rigidBody);
 
@@ -140,14 +140,13 @@ Computes the radius of a sphere collider for a given mesh
     if (!this.rapierLoaded) return;
     this.world.step();
     this.meshMap.forEach((rigidBody, mesh) => {
-
       // extracting the position and rotation from the rigid body
       const position = new THREE.Vector3().copy(rigidBody.translation());
       const rotation = new THREE.Quaternion().copy(rigidBody.rotation());
 
       // transforming the position to the parent mesh's local space
       position.applyMatrix4(
-        new THREE.Matrix4().copy(mesh.parent.matrixWorld).invert()
+        new THREE.Matrix4().copy(mesh.parent.matrixWorld).invert(),
       );
 
       // transforming the rotation to the parent mesh's local space
@@ -158,7 +157,6 @@ Computes the radius of a sphere collider for a given mesh
         new THREE.Quaternion().setFromRotationMatrix(inverseParentMatrix);
       rotation.premultiply(inverseParentRotation);
 
-      
       mesh.position.copy(position);
       mesh.quaternion.copy(rotation);
     });

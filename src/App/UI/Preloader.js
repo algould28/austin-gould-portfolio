@@ -46,7 +46,7 @@ export default class Preloader {
           this.startButton.remove();
         }, 2000);
       },
-      { once: true }
+      { once: true },
     );
   }
 }

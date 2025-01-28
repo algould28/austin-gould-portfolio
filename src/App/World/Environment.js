@@ -53,10 +53,10 @@ export default class Environment {
       child.traverse((obj) => {
         if (obj.isMesh) {
           obj.castShadow = shadowCasters.some((keyword) =>
-            child.name.includes(keyword)
+            child.name.includes(keyword),
           );
           obj.receiveShadow = shadowReceivers.some((keyword) =>
-            child.name.includes(keyword)
+            child.name.includes(keyword),
           );
           if (physicalObjects.some((keyword) => child.name.includes(keyword))) {
             this.physics.add(obj, "fixed", "cuboid");
@@ -108,23 +108,23 @@ export default class Environment {
 
     this.aboutMePortal = new Portal(
       aboutMePortalMesh,
-      modalContentProvider.getModalInfo("aboutMe")
+      modalContentProvider.getModalInfo("aboutMe"),
     );
     this.contactPortal = new Portal(
       contactPortalMesh,
-      modalContentProvider.getModalInfo("contact")
+      modalContentProvider.getModalInfo("contact"),
     );
     this.work1Portal = new Portal(
       work1PortalMesh,
-      modalContentProvider.getModalInfo("work1")
+      modalContentProvider.getModalInfo("work1"),
     );
     this.work2Portal = new Portal(
       work2PortalMesh,
-      modalContentProvider.getModalInfo("work2")
+      modalContentProvider.getModalInfo("work2"),
     );
     this.codePortal = new Portal(
       codePortalMesh,
-      modalContentProvider.getModalInfo("code")
+      modalContentProvider.getModalInfo("code"),
     );
   }
 

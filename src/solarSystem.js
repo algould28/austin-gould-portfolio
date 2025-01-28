@@ -95,7 +95,7 @@ function getRandomArbitrary(min, max) {
 const generateRandomMoonsAndAsteroids = (
   moonQuantity,
   asteroidQuanity,
-  planetName
+  planetName,
 ) => {
   let moonsAndAsteroids = [];
 
@@ -265,7 +265,7 @@ const camera = new THREE.PerspectiveCamera(
   35,
   window.innerWidth / window.innerHeight,
   0.1,
-  500
+  500,
 );
 camera.position.z = 200;
 camera.position.y = 10;

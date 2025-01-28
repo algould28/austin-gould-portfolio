@@ -86,7 +86,7 @@ export default class Portal {
 
         this.modalManager.openModal(
           this.modalInfo.title,
-          this.modalInfo.description
+          this.modalInfo.description,
         );
         this.previouslyIsNear = true;
       }
