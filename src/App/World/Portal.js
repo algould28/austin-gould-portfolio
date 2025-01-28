@@ -45,7 +45,7 @@ export default class Portal {
     this.tween = new Tween(this.portalFarMaterial.emissive);
 
     this.tween
-      .to(this.portalFarColor1, 3000)
+      .to(this.portalFarColor1, 4000)
       .onComplete(() => {
         setTimeout(() => {
           this.animatePortalColor2();
@@ -58,7 +58,7 @@ export default class Portal {
     this.tween = new Tween(this.portalFarMaterial.emissive);
 
     this.tween
-      .to(this.portalFarColor2, 3000)
+      .to(this.portalFarColor2, 4000)
       .onComplete(() => {
         setTimeout(() => {
           this.animatePortalColor1();
