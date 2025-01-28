@@ -40,7 +40,8 @@ body {
   opacity: 0;
 }
 
-.start {
+.start,
+.controls {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -55,11 +56,18 @@ body {
   display: none;
 }
 
-.start.fadeIn {
+.controls {
+  top: 53%;
+  font-size: 1.4rem;
+}
+
+.start.fadeIn,
+.controls.fadeIn {
   opacity: 1;
 }
 
-.start.fadeOut {
+.start.fadeOut,
+.controls.fadeOut {
   opacity: 0;
 }
 
@@ -114,7 +122,8 @@ body {
 }
 
 .close,
-.resume-button {
+.resume-button,
+.email-button {
   display: inline-block;
   width: 120px;
   height: 40px;
@@ -137,11 +146,14 @@ body {
 .close:hover,
 .close:focus,
 .resume-button:hover,
-.resume-button:focus {
+.resume-button:focus,
+.email-button:hover,
+.email-button:focus {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.resume-button {
+.resume-button,
+.email-button {
   margin-left: 8px;
   width: 160px;
   display: none;

@@ -11,6 +11,7 @@ export default class Preloader {
     this.overlay = document.querySelector(".overlay");
     this.loading = document.querySelector(".loading");
     this.startButton = document.querySelector(".start");
+    this.controlsText = document.querySelector(".controls");
 
     this.assetStore.subscribe((state) => {
       this.numberOfLoadedAssets = Object.keys(state.loadedAssets).length;
@@ -32,21 +33,25 @@ export default class Preloader {
 
     this.startButton.style.display = "inline";
     this.startButton.classList.add("fadeIn");
+    this.controlsText.style.display = "inline";
+    this.controlsText.classList.add("fadeIn");
 
     this.startButton.addEventListener(
       "click",
       () => {
         this.overlay.classList.add("fade");
         this.startButton.classList.add("fadeOut");
+        this.controlsText.classList.add("fadeOut");
         // start accepting inputs
         this.inputStore.setState({ ready: true });
 
         window.setTimeout(() => {
           this.overlay.remove();
           this.startButton.remove();
+          this.controlsText.remove();
         }, 2000);
       },
-      { once: true },
+      { once: true }
     );
   }
 }
