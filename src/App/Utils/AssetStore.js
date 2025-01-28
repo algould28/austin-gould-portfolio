@@ -11,6 +11,11 @@ const assetsToLoad = [
     path: "/models/environment_purple_portals.glb",
     type: "model",
   },
+  {
+    id: "background",
+    path: "/textures/cubeMap/",
+    type: "cubeTexture",
+  },
 ];
 
 const assetStore = createStore((set) => ({

@@ -20,10 +20,26 @@ export default class AssetLoader {
     this.gltfLoader = new GLTFLoader();
     this.gltfLoader.setDRACOLoader(dracoLoader);
     this.textureLoader = new THREE.TextureLoader();
+    this.cubeTextureLoader = new THREE.CubeTextureLoader();
   }
 
   startLoading() {
     this.assetsToLoad.forEach((asset) => {
+      if (asset.type === "cubeTexture") {
+        this.cubeTextureLoader.setPath(asset.path);
+
+        this.addLoadedAsset(
+          this.cubeTextureLoader.load([
+            "px.png",
+            "nx.png",
+            "py.png",
+            "ny.png",
+            "pz.png",
+            "nz.png",
+          ]),
+          asset.id
+        );
+      }
       if (asset.type === "texture") {
         this.textureLoader.load(asset.path, (loadedAsset) => {
           this.addLoadedAsset(loadedAsset, asset.id);
