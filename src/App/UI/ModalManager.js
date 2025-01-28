@@ -15,6 +15,13 @@ export default class ModalManager {
 
     this.emailButton.onclick = () => {
       navigator.clipboard.writeText("austin.gould28@gmail.com");
+      this.emailButton.innerHTML = "COPIED";
+      this.emailButton.classList.add("copied");
+
+      setTimeout(() => {
+        this.emailButton.innerHTML = "COPY EMAIL";
+        this.emailButton.classList.remove("copied");
+      }, 2000);
     };
   }
 

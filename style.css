@@ -159,6 +159,10 @@ body {
   display: none;
 }
 
+.email-button.copied {
+  background-color: rgba(0, 255, 0, 0.2);
+}
+
 .modal h1,
 .modal p {
   margin: 0 0 15px 0;
