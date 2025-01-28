@@ -23,7 +23,7 @@ export default class ModalContentProvider {
       },
       code: {
         title: "Code Examples",
-        description: "Coming soon!",
+        description: "Under Construction. Coming soon!",
       },
     };
   }
