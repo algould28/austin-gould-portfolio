@@ -16,5 +16,6 @@ export const inputStore = createStore(() => ({
   backward: false,
   left: false,
   right: false,
+  touchVector: undefined,
   ready: false,
 }));

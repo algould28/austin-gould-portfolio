@@ -15,7 +15,6 @@ export default class AnimationController {
   }
 
   instantiatedAnimations() {
-    const idle = this.avatar.animations[0];
     this.mixer = new THREE.AnimationMixer(this.avatar.scene);
 
     this.animations = new Map();
@@ -38,7 +37,13 @@ export default class AnimationController {
   }
 
   onInput(input) {
-    if (input.forward || input.backward || input.left || input.right) {
+    if (
+      input.forward ||
+      input.backward ||
+      input.left ||
+      input.right ||
+      input?.touchVector != null
+    ) {
       this.playAnimation("run");
     } else {
       this.playAnimation("idle");

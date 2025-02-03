@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { sizesStore } from "./Utils/Store.js";
+import { sizesStore, inputStore } from "./Utils/Store.js";
 
 import App from "./App.js";
 
@@ -16,6 +16,11 @@ export default class Camera {
     this.setInstance();
     this.setControls();
     this.setResizeLister();
+
+    // Subscribe to input store and update movement values
+    inputStore.subscribe((state) => {
+      this.touchVector = state.touchVector;
+    });
   }
 
   setInstance() {
@@ -23,7 +28,7 @@ export default class Camera {
       35,
       this.sizes.width / this.sizes.height,
       1,
-      600,
+      600
     );
     this.instance.position.z = 100;
     this.instance.position.y = 20;
@@ -42,7 +47,10 @@ export default class Camera {
   }
 
   loop() {
+    // disable camera rotation when the user is using touch controls to prevent jittery camera movement
+    this.controls.enableRotate = this?.touchVector == null;
     this.controls.update();
+
     this.characterController = this.app.world.characterController?.rigidBody;
     if (this.characterController) {
       const characterPosition = this.characterController.translation();

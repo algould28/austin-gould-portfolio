@@ -13,7 +13,6 @@ export default class Environment {
     this.assetStore = assetStore.getState();
     this.environment = this.assetStore.loadedAssets.environment;
     this.background = this.assetStore.loadedAssets?.background;
-    console.log(this.background);
 
     this.loadEnvironment();
     this.addLights();

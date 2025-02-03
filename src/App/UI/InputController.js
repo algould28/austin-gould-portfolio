@@ -1,5 +1,6 @@
 import App from "../App";
 import { inputStore } from "../Utils/Store";
+import * as THREE from "three";
 
 export default class InputController {
   constructor() {
@@ -23,9 +24,9 @@ export default class InputController {
     window.addEventListener("keyup", (event) => this.onKeyUp(event));
 
     //mobile touch listeners
-    // window.addEventListener("touchstart", (event) => this.onTouchStart(event));
-    // window.addEventListener("touchend", (event) => this.onTouchEnd(event));
-    // window.addEventListener("touchmove", (event) => this.onTouchMove(event));
+    window.addEventListener("touchstart", (event) => this.onTouchStart(event));
+    window.addEventListener("touchend", () => this.onTouchEnd());
+    window.addEventListener("touchmove", (event) => this.onTouchStart(event));
   }
 
   onKeyDown(event) {
@@ -74,40 +75,19 @@ export default class InputController {
     this.keyPressed[event.code] = false;
   }
 
-  onTouchMove(event) {
-    console.log("onTouchMove");
-    if (event?.targetTouches && event.targetTouches.length > 0) {
-      console.log(event.targetTouches[0]);
-    }
-  }
-
   onTouchStart(event) {
-    console.log("onTouchStart");
+    event.preventDefault();
     if (event?.targetTouches && event.targetTouches.length > 0) {
       const pageX = event.targetTouches[0]?.pageX;
       const pageY = event.targetTouches[0]?.pageY;
 
       if (pageX != null && pageY != null) {
         const normalizedX = pageX - window.innerWidth * 0.5;
-        const normalizedY = pageY - window.innerHeight * 0.8;
-        const diffX = this.character.position.x - normalizedX;
+        const normalizedY = pageY - window.innerHeight * 0.801;
+
         // three js uses y as the vertical axis so z is horizontal in this case
-        const diffZ = this.character.position.z - normalizedY;
-
-        if (diffZ > 0) {
-          inputStore.setState({ forward: true });
-        } else {
-          inputStore.setState({ backward: true });
-        }
-
-        if (diffX > 0) {
-          inputStore.setState({ left: true });
-        } else {
-          inputStore.setState({ right: true });
-        }
-
-        // console.log("diffX: ", diffX);
-        // console.log("diffZ: ", diffZ);
+        const touchVector = new THREE.Vector3(normalizedX, 0, normalizedY);
+        inputStore.setState({ touchVector });
       }
 
       // console.log("pageTouchX: ", event.targetTouches[0]?.pageX);
@@ -136,13 +116,9 @@ export default class InputController {
     }
   }
 
-  onTouchEnd(event) {
+  onTouchEnd() {
     inputStore.setState({
-      forward: false,
-      backward: false,
-      left: false,
-      right: false,
+      touchVector: undefined,
     });
-    console.log("onTouchEnd");
   }
 }
