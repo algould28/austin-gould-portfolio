@@ -117,11 +117,18 @@ canvas {
 
 .modal-wrapper {
   position: relative;
-  width: 50%;
+  width: 90%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+
+  @media (min-width: 641px) {
+    width: 75%;
+  }
+  @media (min-width: 1025px) {
+    width: 50%;
+  }
 }
 
 .modal-content {
@@ -133,29 +140,57 @@ canvas {
   font-family: "Poppins", sans-serif;
   margin: 0 auto;
   color: white;
-  /* Set text color to white within the modal */
+}
+
+.modal-description {
+  font-size: 3vw;
+  @media (min-width: 641px) {
+    font-size: 2vw;
+  }
+  @media (min-width: 1025px) {
+    font-size: 1vw;
+  }
+}
+
+.modal-title {
+  font-size: 4.5vw;
+  @media (min-width: 641px) {
+    font-size: 3.5vw;
+  }
+  @media (min-width: 1025px) {
+    font-size: 2.5vw;
+  }
 }
 
 .close,
 .resume-button,
 .email-button {
   display: inline-block;
-  width: 120px;
-  height: 40px;
-  line-height: 40px;
+  /* width: 120px;
+  height: 40px; */
+  width: fit-content;
+  height: fit-content;
+  padding: 0.25rem 1rem;
+  /* line-height: 40px; */
   text-align: center;
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   color: #fff;
-  /* Set the color of the button text to white */
-  font-size: 20px;
   font-weight: bold;
   transition: 0.6s all;
   cursor: pointer;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
   margin-top: 20px;
+
+  font-size: 4vw;
+  @media (min-width: 641px) {
+    font-size: 3vw;
+  }
+  @media (min-width: 1025px) {
+    font-size: 2vw;
+  }
 }
 
 .close:hover,
@@ -170,7 +205,7 @@ canvas {
 .resume-button,
 .email-button {
   margin-left: 8px;
-  width: 160px;
+  /* width: 160px; */
   display: none;
 }
 
@@ -184,7 +219,7 @@ canvas {
 }
 
 .modal h1 {
-  font-size: 30px;
+  /* font-size: 30px; */
   font-weight: 500;
 }
 
