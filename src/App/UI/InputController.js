@@ -23,10 +23,11 @@ export default class InputController {
     window.addEventListener("keydown", (event) => this.onKeyDown(event));
     window.addEventListener("keyup", (event) => this.onKeyUp(event));
 
+    const canvas = document.getElementById("canvas");
     //mobile touch listeners
-    window.addEventListener("touchstart", (event) => this.onTouchStart(event));
-    window.addEventListener("touchend", () => this.onTouchEnd());
-    window.addEventListener("touchmove", (event) => this.onTouchStart(event));
+    canvas.addEventListener("touchstart", (event) => this.onTouchStart(event));
+    canvas.addEventListener("touchend", () => this.onTouchEnd());
+    canvas.addEventListener("touchmove", (event) => this.onTouchStart(event));
   }
 
   onKeyDown(event) {
