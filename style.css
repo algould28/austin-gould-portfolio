@@ -84,7 +84,8 @@ canvas,
   font-family: "Amatic SC";
   text-align: center;
   margin: 0;
-  display: inline;
+  display: inherit;
+  justify-content: inherit;
 }
 
 .controls {

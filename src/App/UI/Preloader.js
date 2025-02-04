@@ -44,9 +44,9 @@ export default class Preloader {
 
         window.setTimeout(() => {
           this.overlay.remove();
+          this.startContainer.remove();
           this.startButton.remove();
-          this.controlsText.remove();
-        }, 2000);
+        }, 600);
       },
       { once: true }
     );
