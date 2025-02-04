@@ -10,8 +10,8 @@ export default class Preloader {
     // access to DOM elements
     this.overlay = document.querySelector(".overlay");
     this.loading = document.querySelector(".loading");
+    this.startContainer = document.querySelector(".start-container");
     this.startButton = document.querySelector(".start");
-    this.controlsText = document.querySelector(".controls");
 
     this.assetStore.subscribe((state) => {
       this.numberOfLoadedAssets = Object.keys(state.loadedAssets).length;
@@ -31,17 +31,14 @@ export default class Preloader {
   ready() {
     this.loading.remove();
 
-    this.startButton.style.display = "inline";
-    this.startButton.classList.add("fadeIn");
-    this.controlsText.style.display = "inline";
-    this.controlsText.classList.add("fadeIn");
+    this.startContainer.style.display = "flex";
+    this.startContainer.classList.add("fadeIn");
 
     this.startButton.addEventListener(
       "click",
       () => {
         this.overlay.classList.add("fade");
-        this.startButton.classList.add("fadeOut");
-        this.controlsText.classList.add("fadeOut");
+        this.startContainer.classList.add("fadeOut");
         // start accepting inputs
         this.inputStore.setState({ ready: true });
 

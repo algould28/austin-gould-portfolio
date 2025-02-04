@@ -59,34 +59,43 @@ canvas,
   opacity: 0;
 }
 
-.start,
-.controls {
+.start-container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border: none;
+  background-color: transparent;
+  opacity: 0;
+  transition: opacity 0.5s;
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.start,
+.controls {
+  border: none;
   color: white;
   background-color: transparent;
   font-size: 4rem;
   font-family: "Amatic SC";
-  opacity: 0;
-  transition: opacity 0.5s;
-  display: none;
+  text-align: center;
+  margin: 0;
+  display: inline;
 }
 
 .controls {
-  top: 53%;
   font-size: 1.4rem;
 }
 
-.start.fadeIn,
-.controls.fadeIn {
+.start-container.fadeIn {
   opacity: 1;
 }
 
-.start.fadeOut,
-.controls.fadeOut {
+.start-container.fadeOut {
   opacity: 0;
 }
 
