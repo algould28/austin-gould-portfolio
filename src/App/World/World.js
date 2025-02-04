@@ -4,6 +4,7 @@ import Environment from "./Environment.js";
 import Character from "./Character.js";
 import CharacterController from "./CharacterController.js";
 import AnimationController from "./AnimationController.js";
+import InputController from "../UI/InputController.js";
 
 import { appStateStore } from "../Utils/Store.js";
 
@@ -15,13 +16,14 @@ export default class World {
     this.physics = new Physics();
 
     // create world classes
-    const unsub = appStateStore.subscribe((state) => {
+    const unsubscribe = appStateStore.subscribe((state) => {
       if (state.physicsReady && state.assetsReady) {
         this.environment = new Environment();
         this.character = new Character();
         this.characterController = new CharacterController();
         this.animationController = new AnimationController();
-        unsub();
+        this.inputController = new InputController();
+        unsubscribe();
       }
     });
 
