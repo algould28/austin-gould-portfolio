@@ -59,7 +59,7 @@ export default class Physics {
         colliderType = this.rapier.ColliderDesc.cuboid(
           dimensions.x / 2,
           dimensions.y / 2,
-          dimensions.z / 2,
+          dimensions.z / 2
         );
         this.world.createCollider(colliderType, this.rigidBody);
         break;
@@ -72,7 +72,7 @@ export default class Physics {
         const { scaledVertices, indices } = this.computeTrimeshDimensions(mesh);
         colliderType = this.rapier.ColliderDesc.trimesh(
           scaledVertices,
-          indices,
+          indices
         );
         this.world.createCollider(colliderType, this.rigidBody);
 
@@ -146,7 +146,7 @@ Computes the radius of a sphere collider for a given mesh
 
       // transforming the position to the parent mesh's local space
       position.applyMatrix4(
-        new THREE.Matrix4().copy(mesh.parent.matrixWorld).invert(),
+        new THREE.Matrix4().copy(mesh.parent.matrixWorld).invert()
       );
 
       // transforming the rotation to the parent mesh's local space

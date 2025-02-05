@@ -74,7 +74,7 @@ export default class Environment {
     this.scene.add(ambientLight);
 
     this.directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    this.directionalLight.position.set(1, 1, 1.8);
+    this.directionalLight.position.set(5, 5, 7);
     this.directionalLight.castShadow = true;
     this.directionalLight.shadow.camera.top = 30;
     this.directionalLight.shadow.camera.right = 30;
