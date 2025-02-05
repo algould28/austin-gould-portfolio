@@ -162,7 +162,7 @@ canvas,
     font-size: 2vw;
   }
   @media (min-width: 1025px) {
-    font-size: 1vw;
+    font-size: 1.2vw;
   }
 }
 
