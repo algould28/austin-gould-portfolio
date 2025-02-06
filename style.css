@@ -16,7 +16,8 @@ canvas,
 .start,
 .resume-button,
 .close,
-.email-button {
+.email-button,
+.close-code-modal {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -162,9 +163,11 @@ canvas,
   font-family: "Poppins", sans-serif;
   margin: 0 auto;
   color: white;
+  opacity: 1;
 }
 
-.code-modal-content {
+.code-modal-content,
+.project-names-container {
   transition: inherit;
   min-height: inherit;
   height: inherit;
@@ -192,7 +195,9 @@ canvas,
 
 .close,
 .resume-button,
-.email-button {
+.email-button,
+.close-code-modal,
+.back-button {
   display: inline-block;
   width: fit-content;
   height: fit-content;
@@ -223,7 +228,11 @@ canvas,
 .resume-button:hover,
 .resume-button:focus,
 .email-button:hover,
-.email-button:focus {
+.email-button:focus,
+.close-code-modal:hover,
+.close-code-modal:focus,
+.back-button:hover,
+.back-button:focus {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -235,6 +244,13 @@ canvas,
 
 .email-button.copied {
   background-color: rgba(4, 255, 31, 0.2);
+}
+
+.back-button {
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
 .modal h1,
@@ -262,4 +278,27 @@ canvas,
 .project-name:hover,
 .project-name:focus {
   color: #a528e2;
+}
+
+.project-container {
+  display: none;
+  opacity: 0;
+  position: inherit;
+  width: inherit;
+  height: inherit;
+  overflow-y: scroll;
+  transition: all 600ms ease-in-out;
+  flex-direction: column;
+}
+
+.project-container.fadeIn,
+.back-button.fadeIn,
+.project-names-container.fadeIn {
+  opacity: 1;
+}
+
+.project-container.fadeOut,
+.back-button.fadeOut,
+.project-names-container.fadeOut {
+  opacity: 0;
 }

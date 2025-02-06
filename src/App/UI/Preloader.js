@@ -32,7 +32,11 @@ export default class Preloader {
     this.loading.remove();
 
     this.startContainer.style.display = "flex";
-    this.startContainer.classList.add("fadeIn");
+    // we need a timeout here or the fade in transition will not work
+    // transitions don't seem to work when the element is going from display: none -> display: yes
+    window.setTimeout(() => {
+      this.startContainer.classList.add("fadeIn");
+    }, 1);
 
     this.startButton.addEventListener(
       "click",
