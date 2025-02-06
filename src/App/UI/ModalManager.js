@@ -59,12 +59,7 @@ export default class ModalManager {
           this.codeModalWrapper.style.width = "95%";
           this.codeModalContent.style.minHeight = "84vh";
 
-          // window.setTimeout(() => {
           this.showProjectDetails(element.innerHTML.toLocaleLowerCase());
-          // }, 601);
-        } else {
-          this.codeModalWrapper.style.width = this.codeModalWrapperWidth;
-          this.codeModalContent.style.minHeight = this.codeModalWrapperHeight;
         }
       };
     }
@@ -74,6 +69,7 @@ export default class ModalManager {
     this.projectContainer = document.getElementById(`${projectName}Project`);
 
     this.projectContainer.classList.remove("fadeOut");
+    this.projectNamesContainer.classList.remove("fadeIn");
     this.projectNamesContainer.classList.add("fadeOut");
 
     window.setTimeout(() => {
@@ -90,15 +86,13 @@ export default class ModalManager {
 
   hideProjectDetails() {
     this.projectContainer.classList.remove("fadeIn");
-    this.projectNamesContainer.classList.remove("fadeOut");
 
     this.projectContainer.classList.add("fadeOut");
 
     window.setTimeout(() => {
       this.projectContainer.style.display = "none";
-      this.projectContainer = null;
-
       this.projectNamesContainer.style.display = "block";
+      this.projectContainer = null;
 
       this.codeModalWrapper.style.width = this.codeModalWrapperWidth;
       this.codeModalContent.style.minHeight = this.codeModalWrapperHeight;
@@ -106,6 +100,7 @@ export default class ModalManager {
       // we need a timeout here or the fade in transition will not work
       // transitions don't seem to work when the element is going from display: none -> display: yes
       window.setTimeout(() => {
+        this.projectNamesContainer.classList.remove("fadeOut");
         this.projectNamesContainer.classList.add("fadeIn");
       }, 10);
     }, 601);
