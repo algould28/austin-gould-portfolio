@@ -129,7 +129,8 @@ canvas,
   opacity: 0;
 }
 
-.modal-wrapper {
+.modal-wrapper,
+.code-modal-wrapper {
   position: relative;
   width: 90%;
   top: 50%;
@@ -145,7 +146,14 @@ canvas,
   }
 }
 
-.modal-content {
+.code-modal-wrapper {
+  transition: all 600ms ease-in-out;
+  min-height: 0;
+  height: auto;
+}
+
+.modal-content,
+.code-modal-content {
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(25px);
   padding: 20px;
@@ -154,6 +162,12 @@ canvas,
   font-family: "Poppins", sans-serif;
   margin: 0 auto;
   color: white;
+}
+
+.code-modal-content {
+  transition: inherit;
+  min-height: inherit;
+  height: inherit;
 }
 
 .modal-description {
@@ -234,4 +248,18 @@ canvas,
 
 .modal p {
   font-weight: 300;
+}
+
+.project-name {
+  display: block;
+  font-weight: 400;
+  font-size: 1.3vw;
+  width: 100%;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.project-name:hover,
+.project-name:focus {
+  color: #a528e2;
 }

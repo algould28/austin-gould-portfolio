@@ -4,6 +4,13 @@ export default class ModalManager {
     this.close = document.getElementsByClassName("close")[0];
     this.resumeButton = document.getElementsByClassName("resume-button")[0];
     this.emailButton = document.getElementsByClassName("email-button")[0];
+    this.projectButtons = document.getElementsByClassName("project-name");
+
+    this.codeModalWrapper = document.getElementById("codeModalWrapper");
+    this.codeModalContent = document.getElementById("codeModalContent");
+    this.codeModalWrapperWidth = this.codeModalWrapper.style.width;
+    this.codeModalWrapperHeight = this.codeModalWrapper.style.minHeight;
+    this.codeModalContent.style.minHeight = this.codeModalWrapperHeight;
 
     this.close.onclick = () => {
       this.closeModal();
@@ -23,6 +30,19 @@ export default class ModalManager {
         this.emailButton.classList.remove("copied");
       }, 2000);
     };
+
+    for (let i = 0; i < this.projectButtons.length; i++) {
+      let element = this.projectButtons[i];
+      element.onclick = () => {
+        if (element.innerHTML === "Headstorm") {
+          this.codeModalWrapper.style.width = "95%";
+          this.codeModalContent.style.minHeight = "84vh";
+        } else {
+          this.codeModalWrapper.style.width = this.codeModalWrapperWidth;
+          this.codeModalContent.style.minHeight = this.codeModalWrapperHeight;
+        }
+      };
+    }
   }
 
   openModal(title, description) {
@@ -34,8 +54,16 @@ export default class ModalManager {
     if (title.toLocaleLowerCase().includes("contact"))
       this.emailButton.style.display = "inline-block";
 
-    document.getElementById("modalTitle").innerHTML = title;
-    document.getElementById("modalDescription").innerHTML = description;
+    if (!title.toLocaleLowerCase().includes("code")) {
+      this.modal = document.getElementById("myModal");
+      document.getElementById("modalTitle").innerHTML = title;
+      document.getElementById("modalDescription").innerHTML = description;
+    } else {
+      this.modal = document.getElementById("codeModal");
+      document.getElementById("codeModalTitle").innerHTML = title;
+      document.getElementById("codeModalDescription").innerHTML = description;
+    }
+
     this.modal.style.display = "block";
     this.modal.classList.remove("fadeOut");
     this.modal.classList.add("fadeIn");
