@@ -118,12 +118,11 @@ canvas,
   background-color: rgba(0, 0, 0, 0);
   overflow: auto;
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.6s ease-in-out;
 }
 
 .modal.fadeIn {
   opacity: 1;
-  display: block;
 }
 
 .modal.fadeOut {
@@ -156,6 +155,8 @@ canvas,
 .modal-content,
 .code-modal-content {
   background-color: rgba(255, 255, 255, 0.2);
+  /* After much research, I've found that you cannot animate both opacity and backdrop-blur UNLESS they are in the parent element. This is currently a browser issue. So I'm leaving this for now and may try to work everything into one component in the future. You may see the backdrop-blur "pop" in after the opacity transition completes */
+  /* https://github.com/tailwindlabs/tailwindcss/issues/4001 */
   backdrop-filter: blur(25px);
   padding: 20px;
   border-radius: 20px;
@@ -166,9 +167,29 @@ canvas,
   opacity: 1;
 }
 
+/* .modal-content.fadeIn,
+.code-modal-content.fadeIn {
+  animation: blur-in 599ms normal 1ms 1 forwards ease-in-out;
+}
+
+.modal-content.fadeOut,
+.code-modal-content.fadeOut {
+  animation: blur-in 599ms normal 1ms 1 backwards ease-in-out;
+} */
+
+/* Let's define an animation: */
+/* @keyframes blur-in {
+  from {
+    backdrop-filter: blur(0px);
+  }
+  to {
+    backdrop-filter: blur(25px);
+  }
+} */
+
 .code-modal-content,
 .project-names-container {
-  transition: all 600ms ease-in-out;
+  /* transition: all 600ms ease-in-out; */
   min-height: inherit;
   height: inherit;
   opacity: inherit;
