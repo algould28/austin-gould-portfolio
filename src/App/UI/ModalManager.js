@@ -5,7 +5,7 @@ export default class ModalManager {
     this.resumeButton = document.getElementsByClassName("resume-button")[0];
     this.emailButton = document.getElementsByClassName("email-button")[0];
     this.projectButtons = document.getElementsByClassName("project-name");
-    this.backButton = document.getElementsByClassName("back-button")[0];
+    this.backButtons = document.getElementsByClassName("back-button");
     this.projectContainer = null;
 
     this.close.onclick = () => {
@@ -25,10 +25,6 @@ export default class ModalManager {
         this.emailButton.innerHTML = "COPY EMAIL";
         this.emailButton.classList.remove("copied");
       }, 2000);
-    };
-
-    this.backButton.onclick = () => {
-      this.hideProjectDetails();
     };
 
     this.instantiateCodeModal();
@@ -55,12 +51,17 @@ export default class ModalManager {
     for (let i = 0; i < this.projectButtons.length; i++) {
       let element = this.projectButtons[i];
       element.onclick = () => {
-        if (element.innerHTML === "Headstorm") {
-          this.codeModalWrapper.style.width = "95%";
-          this.codeModalContent.style.minHeight = "84vh";
+        this.codeModalWrapper.style.width = "95%";
+        this.codeModalContent.style.minHeight = "84vh";
 
-          this.showProjectDetails(element.innerHTML.toLocaleLowerCase());
-        }
+        this.showProjectDetails(element.innerHTML.toLocaleLowerCase());
+      };
+    }
+
+    for (let i = 0; i < this.backButtons.length; i++) {
+      let element = this.backButtons[i];
+      element.onclick = () => {
+        this.hideProjectDetails();
       };
     }
   }
@@ -131,7 +132,7 @@ export default class ModalManager {
     // transitions don't seem to work when the element is going from display: none -> display: yes
     window.setTimeout(() => {
       this.modal.classList.add("fadeIn");
-    }, 1);
+    }, 10);
   }
 
   closeModal() {
