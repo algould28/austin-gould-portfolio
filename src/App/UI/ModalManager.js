@@ -54,7 +54,15 @@ export default class ModalManager {
         this.codeModalWrapper.style.width = "95%";
         this.codeModalContent.style.minHeight = "84vh";
 
-        this.showProjectDetails(element.innerHTML.toLocaleLowerCase());
+        const camelCaseName = element.innerHTML
+          .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+            return index === 0 ? word.toLowerCase() : word.toUpperCase();
+          })
+          .replace(/\s+/g, "");
+
+        console.log(camelCaseName);
+
+        this.showProjectDetails(camelCaseName);
       };
     }
 

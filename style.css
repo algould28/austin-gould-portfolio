@@ -157,6 +157,7 @@ canvas,
   background-color: rgba(255, 255, 255, 0.2);
   /* After much research, I've found that you cannot animate both opacity and backdrop-blur UNLESS they are in the parent element. This is currently a browser issue. So I'm leaving this for now and may try to work everything into one component in the future. You may see the backdrop-blur "pop" in after the opacity transition completes */
   /* https://github.com/tailwindlabs/tailwindcss/issues/4001 */
+  /* https://stackoverflow.com/questions/75807279/backdrop-filter-style-being-applied-after-animation */
   backdrop-filter: blur(25px);
   padding: 20px;
   border-radius: 20px;
@@ -189,7 +190,7 @@ canvas,
 
 .code-modal-content,
 .project-names-container {
-  /* transition: all 600ms ease-in-out; */
+  transition: all 600ms ease-in-out;
   min-height: inherit;
   height: inherit;
   opacity: inherit;
@@ -218,8 +219,7 @@ canvas,
 .close,
 .resume-button,
 .email-button,
-.close-code-modal,
-.back-button {
+.close-code-modal {
   display: inline-block;
   width: fit-content;
   height: fit-content;
@@ -252,9 +252,7 @@ canvas,
 .email-button:hover,
 .email-button:focus,
 .close-code-modal:hover,
-.close-code-modal:focus,
-.back-button:hover,
-.back-button:focus {
+.close-code-modal:focus {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -270,9 +268,25 @@ canvas,
 
 .back-button {
   display: inline-block;
+  width: fit-content;
+  height: fit-content;
   position: absolute;
-  top: 20px;
-  left: 20px;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.3s color ease-in-out;
+  cursor: pointer;
+  text-transform: lowercase;
+  font-family: "Poppins", sans-serif;
+  background: none;
+  border: none;
+
+  font-size: 4vw;
+  @media (min-width: 641px) {
+    font-size: 3vw;
+  }
+  @media (min-width: 1025px) {
+    font-size: 2vw;
+  }
 }
 
 .modal h1,
@@ -298,7 +312,9 @@ canvas,
 }
 
 .project-name:hover,
-.project-name:focus {
+.project-name:focus,
+.back-button:hover,
+.back-button:focus {
   color: #a528e2;
 }
 
