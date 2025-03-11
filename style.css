@@ -12,6 +12,10 @@ body {
   font-family: "Amatic SC", cursive;
 }
 
+a {
+  color: #a528e2;
+}
+
 canvas,
 .start,
 .resume-button,

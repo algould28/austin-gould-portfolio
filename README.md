@@ -1,4 +1,4 @@
-# ThreeJS with Vite Starter Pack
+# Austin Gould's Portfolio Repo
 
 ### Prerequisites
 
