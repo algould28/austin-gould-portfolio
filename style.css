@@ -81,7 +81,8 @@ canvas,
 }
 
 .start,
-.controls {
+.controls,
+.touch-controls {
   border: none;
   color: white;
   background-color: transparent;
@@ -95,6 +96,14 @@ canvas,
 
 .controls {
   font-size: 4vw;
+}
+
+.touch-controls {
+  font-size: 3vw;
+
+  @media (min-width: 1025px) {
+    display: none;
+  }
 }
 
 .start-container.fadeIn {
